@@ -15,7 +15,6 @@ const TimelineTweet = () => {
         const timelineTweets = await axios.get(
           `/tweets/timeline/${currentUser._id}`
         );
-
         setTimeLine(timelineTweets.data);
       } catch (err) {
         console.log("error", err);
