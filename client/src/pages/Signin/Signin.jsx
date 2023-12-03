@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { loginStart, loginSuccess, loginFailed } from "../../redux/userSlice";
 
 import { useNavigate } from "react-router-dom";
+import OAuth from '../../components/OAuth';
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -96,6 +97,7 @@ const Signin = () => {
       >
         Sign up
       </button>
+      <OAuth/>
     </form>
   );
 };

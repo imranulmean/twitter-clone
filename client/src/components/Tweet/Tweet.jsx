@@ -40,11 +40,12 @@ const Tweet = ({ tweet, setData }) => {
       const like = await axios.put(`/tweets/${tweet._id}/like`, {
         id: currentUser._id,
       });
-
+      
       if (location.includes("profile")) {
         const newData = await axios.get(`/tweets/user/all/${id}`);
         setData(newData.data);
       } else if (location.includes("explore")) {
+
         const newData = await axios.get(`/tweets/explore`);
         setData(newData.data);
       } else {
