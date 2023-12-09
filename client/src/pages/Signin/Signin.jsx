@@ -20,6 +20,7 @@ const Signin = () => {
     dispatch(loginStart());
     try {
       const res = await axios.post("/api/auth/signin", { username, password });
+      console.log(res.data);
       dispatch(loginSuccess(res.data));
       navigate("/");
     } catch (err) {
@@ -32,7 +33,7 @@ const Signin = () => {
     dispatch(loginStart());
 
     try {
-      const res = await axios.post("/auth/signup", {
+      const res = await axios.post("/api/auth/signup", {
         username,
         email,
         password,

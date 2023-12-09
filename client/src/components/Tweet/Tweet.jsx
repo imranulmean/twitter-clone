@@ -22,7 +22,7 @@ const Tweet = ({ tweet, setData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const findUser = await axios.get(`/users/find/${tweet.userId}`);
+        const findUser = await axios.get(`/api/users/find/${tweet.userId}`);
 
         setUserData(findUser.data);
       } catch (err) {
@@ -37,19 +37,19 @@ const Tweet = ({ tweet, setData }) => {
     e.preventDefault();
 
     try {
-      const like = await axios.put(`/tweets/${tweet._id}/like`, {
+      const like = await axios.put(`/api/tweets/${tweet._id}/like`, {
         id: currentUser._id,
       });
       
       if (location.includes("profile")) {
-        const newData = await axios.get(`/tweets/user/all/${id}`);
+        const newData = await axios.get(`/api/tweets/user/all/${id}`);
         setData(newData.data);
       } else if (location.includes("explore")) {
 
-        const newData = await axios.get(`/tweets/explore`);
+        const newData = await axios.get(`/api/tweets/explore`);
         setData(newData.data);
       } else {
-        const newData = await axios.get(`/tweets/timeline/${currentUser._id}`);
+        const newData = await axios.get(`/api/tweets/timeline/${currentUser._id}`);
         setData(newData.data);
       }
     } catch (err) {
